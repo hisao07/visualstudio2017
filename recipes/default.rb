@@ -21,12 +21,13 @@ edition = conf['edition']
 includeRecommended = conf['includeRecommended'] ? '--includeRecommended' : ''
 includeOptional = conf['includeOptional'] ? '--includeOptional' : ''
 workloads = conf['workloads'].map{|workload| "--add #{workload}"}.join(' ')
+noweb = conf['noweb'] ? '--noweb' : ''
 
 windows_package 'vs_communitymsires' do
   source conf[edition]['url']
   checksum conf[edition]['checksum']
   installer_type :custom
-  options "-q --norestart #{workloads} #{includeRecommended} #{includeOptional} --wait"
+  options "-q --norestart #{workloads} #{includeRecommended} #{includeOptional} --wait #{noweb}"
   timeout conf['timeout']
   returns [0, 3010]
 end

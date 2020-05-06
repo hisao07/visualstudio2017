@@ -29,4 +29,5 @@ default['visualstudio2017'] = {
   includeRecommended: false,
   includeOptional: false,
   workloads: [],
+  noweb: false,
 }
